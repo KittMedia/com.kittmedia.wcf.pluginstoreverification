@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="en">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.pluginstoreverification"><![CDATA[WoltLab® Plugin-Store Verification]]></item>
+		<item name="wcf.acp.group.option.user.pluginstoreverification.enable"><![CDATA[Enable]]></item>
+		<item name="wcf.acp.group.option.user.pluginstoreverification.pluginStoreFileID"><![CDATA[File ID]]></item>
+		<item name="wcf.acp.group.option.user.pluginstoreverification.pluginStorePackageName"><![CDATA[Package Name]]></item>
+	</category>
+	
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.user.pluginstoreverification"><![CDATA[WoltLab® Plugin Store Verification]]></item>
+		<item name="wcf.acp.option.pluginstoreverification_vendor_id"><![CDATA[Vendor ID]]></item>
+		<item name="wcf.acp.option.pluginstoreverification_vendor_api_key"><![CDATA[Vendor API Key]]></item>
+	</category>
+	
+	<category name="wcf.header.menu">
+		<item name="wcf.header.menu.woltlabPluginStoreVerification"><![CDATA[WoltLab® Plugin-Store Verification]]></item>
+	</category>
+	
+	<category name="wcf.woltlab.pluginstoreverification">
+		<item name="wcf.woltlab.pluginstoreverification.apiKey"><![CDATA[API–Key]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.apiKey.description"><![CDATA[Enter the API–Key, which WoltLab® GmbH provides you at the following link: <a href="https://www.woltlab.com/apimanagement/" class="externalURL"{if EXTERNAL_LINK_TARGET_BLANK} target="_blank"{/if}>API–Access</a>]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.content"><![CDATA[Product]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.woltlabID"><![CDATA[WoltLab-ID]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.woltlabID.description"><![CDATA[Enter the WoltLab-ID, which WoltLab® GmbH provides you at the following link: <a href="https://www.woltlab.com/apimanagement/" class="externalURL"{if EXTERNAL_LINK_TARGET_BLANK} target="_blank"{/if}>API–Access</a>]]></item>
+	</category>
+</language>

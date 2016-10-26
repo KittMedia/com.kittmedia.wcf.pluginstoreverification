@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/objectTypeDefinition.xsd">
+	<import>
+		<definition>
+			<interfacename><![CDATA[wcf\system\woltlab\plugin\store\activation\content\provider\IWoltlabPluginStoreActivationContentProvider]]></interfacename>
+			<name>com.kittmedia.wcf.pluginstoreverification.content.provider</name>
+		</definition>
+	</import>
+</data>

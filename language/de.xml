@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="de">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.pluginstoreverification"><![CDATA[WoltLab® Plugin-Store Verification]]></item>
+		<item name="wcf.acp.group.option.user.pluginstoreverification.enable"><![CDATA[Aktivieren]]></item>
+		<item name="wcf.acp.group.option.user.pluginstoreverification.pluginStoreFileID"><![CDATA[Datei–ID]]></item>
+		<item name="wcf.acp.group.option.user.pluginstoreverification.pluginStorePackageName"><![CDATA[Paket–Name]]></item>
+	</category>
+	
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.user.pluginstoreverification"><![CDATA[WoltLab® Plugin-Store Verification]]></item>
+		<item name="wcf.acp.option.pluginstoreverification_vendor_id"><![CDATA[Vendor ID]]></item>
+		<item name="wcf.acp.option.pluginstoreverification_vendor_id.description"><![CDATA[Bitte geben Sie hier Ihre <code class="inlineCode">vendorID</code> ein, welche Sie im <a href="{@$__wcf->getPath()}acp/dereferrer.php?url={"https://www.woltlab.com/pluginstore/index.php/VendorTransactionList/"|rawurlencode}" class="externalURL">Händlerbereich</a> einsehen können.]]></item>
+		<item name="wcf.acp.option.pluginstoreverification_vendor_api_key"><![CDATA[Vendor API–Key]]></item>
+		<item name="wcf.acp.option.pluginstoreverification_vendor_api_key.description"><![CDATA[Bitte geben Sie hier Ihren <code class="inlineCode">apiKey</code> ein, welchen Sie im <a href="{@$__wcf->getPath()}acp/dereferrer.php?url={"https://www.woltlab.com/pluginstore/index.php/VendorTransactionList/"|rawurlencode}" class="externalURL">Händlerbereich</a> einsehen können.]]></item>
+	</category>
+	
+	<category name="wcf.header.menu">
+		<item name="wcf.header.menu.woltlabPluginStoreVerification"><![CDATA[WoltLab® Plugin-Store Verification]]></item>
+	</category>
+	
+	<category name="wcf.woltlab.pluginstoreverification">
+		<item name="wcf.woltlab.pluginstoreverification.apiKey"><![CDATA[API–Key]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.apiKey.description"><![CDATA[Geben Sie hier den API–Key ein, den die WoltLab® GmbH Ihnen unter dem folgenden Link zur Verfügung stellt: <a href="https://www.woltlab.com/apimanagement/" class="externalURL"{if EXTERNAL_LINK_TARGET_BLANK} target="_blank"{/if}>API–Zugriff</a>]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.content"><![CDATA[Produkt]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.woltlabID"><![CDATA[WoltLab-ID]]></item>
+		<item name="wcf.woltlab.pluginstoreverification.woltlabID.description"><![CDATA[Geben Sie hier den WoltLab–ID ein, den die WoltLab® GmbH Ihnen unter dem folgenden Link zur Verfügung stellt: <a href="https://www.woltlab.com/apimanagement/" class="externalURL"{if EXTERNAL_LINK_TARGET_BLANK} target="_blank"{/if}>API–Zugriff</a>]]></item>
+	</category>
+</language>
