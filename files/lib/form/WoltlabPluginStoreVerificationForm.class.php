@@ -113,8 +113,16 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 			throw new UserInputException('woltlabID');
 		}
 		
-		// @ToDo: validate content
-		die('<pre>'.print_r($this->content, true));
+		$contentParts = explode('-', $this->content);
+		if (!(count($contentParts) == 2)) {
+			throw new UserInputException('content');
+		}
+		else if (($contentProvider = WoltlabPluginStoreActivationContentHandler::getInstance()->getContentProviderByObjectTypeName($contentParts[0])) == null) {
+			throw new UserInputException('content', 'invalid');
+		}
+		else if (!array_key_exists($this->content, $contentProvider->getSelectOptionsArray())) {
+			throw new UserInputException('content', 'invalid');
+		}
 	}
 	
 	/**

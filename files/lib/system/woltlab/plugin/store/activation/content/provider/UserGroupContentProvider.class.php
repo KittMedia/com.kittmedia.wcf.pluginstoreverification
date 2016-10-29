@@ -26,7 +26,7 @@ class UserGroupContentProvider extends AbstractWoltlabPluginStoreActivationConte
 		$selectOptions = array();
 		
 		foreach (UserGroupCacheBuilder::getInstance()->getData(array(), 'groups') as $userGroup) {
-			if ($userGroup->getGroupOption('user.pluginstoreverification.enable')) {
+			if ($userGroup->getGroupOption('user.pluginstoreverification.enable') && !$userGroup->isMember()) {
 				if (!$userGroup->getGroupOption('user.pluginstoreverification.pluginStoreFileID') || !$userGroup->getGroupOption('user.pluginstoreverification.pluginStorePackageName')) {
 					continue;
 				}

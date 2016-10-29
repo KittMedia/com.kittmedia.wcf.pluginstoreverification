@@ -53,4 +53,18 @@ class WoltlabPluginStoreActivationContentHandler extends SingletonFactory {
 	public function getAvailableContentProvider() {
 		return $this->availableActivationContentProvider;
 	}
+	
+	/**
+	 * Returns the content provider by its object type name or null
+	 * if no content providers with given object type is registered.
+	 * @param	string		 $objectTypeName
+	 * @return	\wcf\system\woltlab\plugin\store\activation\content\IWoltlabPluginStoreActivationContentProvider|null
+	 */
+	public function getContentProviderByObjectTypeName($objectTypeName) {
+		if (array_key_exists($objectTypeName, $this->availableActivationContentProvider)) {
+			return $this->availableActivationContentProvider[$objectTypeName];
+		}
+		
+		return null;
+	}
 }
