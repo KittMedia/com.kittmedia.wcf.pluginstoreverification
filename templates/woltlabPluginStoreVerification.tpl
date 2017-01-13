@@ -23,56 +23,39 @@
 
 {include file='formError'}
 
+{if $success|isset}
+	<p class="success">{lang}wcf.woltlabapi.pluginstore.contentProvider.success{/lang}</p>
+{/if}
+
 <form id="messageContainer" class="jsFormGuard" method="post" action="{link controller='WoltlabPluginStoreVerification'}{/link}">
 	<div class="container containerPadding marginTop">
+		{event name='beforeFieldsets'}
+		
 		<fieldset>
 			<legend>{lang}wcf.global.form.data{/lang}</legend>
 			
-			<dl{if $errorField == 'apiKey'} class="formError"{/if}>
-				<dt><label for="apiKey">{lang}wcf.woltlab.pluginstoreverification.apiKey{/lang}</label></dt>
+			{include file='woltlabVendorCustomerAPIInputFields'}
+			
+			<dl{if $errorField == 'pluginstoreFileID'} class="formError"{/if}>
+				<dt><label for="pluginstoreFileID">{lang}wcf.woltlabapi.pluginstore.file.productName{/lang}</label></dt>
 				<dd>
-					<input type="text" id="apiKey" name="apiKey" value="{$apiKey}" required="required" maxlength="255" class="medium" />
-					{if $errorField == 'apiKey'}
+					{htmlOptions options=$availableFiles name='pluginstoreFileID' selected=$fileID}
+					{if $errorField == 'pluginstoreFileID'}
 						<small class="innerError">
 							{if $errorType == 'empty'}
-								{lang}wcf.global.form.error.empty{/lang}
+								{lang}wcf.global.form.error.{$errorType}{/lang}
 							{else}
-								{lang}wcf.woltlab.pluginstoreverification.apiKey.error.{@$errorType}{/lang}
+								{lang}wcf.woltlabapi.pluginstore.file.productName.name.error.{$errorType}{/lang}
 							{/if}
 						</small>
 					{/if}
-					<small>{lang}wcf.woltlab.pluginstoreverification.apiKey.description{/lang}</small>
-				</dd>
-			</dl>
-			
-			<dl{if $errorField == 'woltlabID'} class="formError"{/if}>
-				<dt><label for="woltlabID">{lang}wcf.woltlab.pluginstoreverification.woltlabID{/lang}</label></dt>
-				<dd>
-					<input type="text" id="woltlabID" name="woltlabID" value="{$woltlabID}" required="required" maxlength="255" class="medium" />
-					{if $errorField == 'woltlabID'}
-						<small class="innerError">
-							{if $errorType == 'empty'}
-								{lang}wcf.global.form.error.empty{/lang}
-							{else}
-								{lang}wcf.woltlab.pluginstoreverification.woltlabID.error.{@$errorType}{/lang}
-							{/if}
-						</small>
-					{/if}
-					<small>{lang}wcf.woltlab.pluginstoreverification.woltlabID.description{/lang}</small>
-				</dd>
-			</dl>
-			
-			<dl{if $errorField == 'content'} class="formError"{/if}>
-				<dt><label for="content">{lang}wcf.woltlab.pluginstoreverification.content{/lang}</label></dt>
-				<dd>
-					{htmloptions options=$availableContentTree name='content' selected=$content}
 				</dd>
 			</dl>
 			
 			{event name='dataFields'}
 		</fieldset>
 		
-		{event name='fieldsets'}
+		{event name='afterFieldsets'}
 	</div>
 	
 	<div class="formSubmit">

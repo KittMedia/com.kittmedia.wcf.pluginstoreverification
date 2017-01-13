@@ -1,15 +1,19 @@
 <?php
 namespace wcf\form;
-use \wcf\system\exception\UserInputException;
-use \wcf\system\woltlab\plugin\store\activation\content\provider\WoltlabPluginStoreActivationContentHandler;
-use \wcf\system\WCF;
-use \wcf\util\StringUtil;
+use wcf\system\api\woltlab\vendor\WoltlabVendorAPI;
+use wcf\system\exception\HTTPServerErrorException;
+use wcf\system\exception\HTTPUnauthorizedException;
+use wcf\system\exception\NamedUserException;
+use wcf\system\exception\UserInputException;
+use wcf\system\cache\builder\WoltlabPluginstoreVerificationFileCacheBuilder;
+use wcf\system\WCF;
+use wcf\util\StringUtil;
 
 /**
  * Represents the WoltLab(R) plugin store verification form.
  * 
  * @author	Dennis Kraffczyk
- * @copyright	2011-2016 KittMedia Productions
+ * @copyright	2011-2017 KittMedia Productions
  * @license	Commercial <https://kittblog.com/board/licenses/free.html>
  * @package	com.kittmedia.wcf.pluginstoreverification
  * @category	Community Framework
@@ -29,15 +33,15 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	 * @see		\wcf\page\AbstractPage::$neededModules
 	 */
 	public $neededModules = array(
-		'PLUGINSTOREVERIFICATION_VENDOR_ID',
-		'PLUGINSTOREVERIFICATION_VENDOR_API_KEY'
+		'WOLTLAB_VENDOR_ID',
+		'WOLTLAB_VENDOR_API_KEY'
 	);
 	
 	/**
-	 * List of available content
-	 * @var		array<mixed>
+	 * List of available files
+	 * @var		array<\wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile>
 	 */
-	public $availableContentTree = array();
+	public $availableFiles = array();
 	
 	/**
 	 * buyers api key
@@ -46,10 +50,16 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	public $apiKey = '';
 	
 	/**
-	 * Selected content value
-	 * @var		string
+	 * Id of selected file
+	 * @var		integer
 	 */
-	public $content = '';
+	public $fileID = 0;
+	
+	/**
+	 * Indicates if access to content will be denied or not
+	 * @var		boolean
+	 */
+	public $provideAccess = false;
 	
 	/**
 	 * buyers woltlabID
@@ -65,8 +75,8 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 		
 		WCF::getTPL()->assign(array(
 			'apiKey' => $this->apiKey,
-			'availableContentTree' => $this->availableContentTree,
-			'content' => $this->content,
+			'availableFiles' => $this->availableFiles,
+			'fileID' => $this->fileID,
 			'woltlabID' => $this->woltlabID
 		));
 	}
@@ -75,18 +85,17 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	 * @see		\wcf\page\IPage::readData()
 	 */
 	public function readData() {
-		parent::readData();
+		$this->availableFiles = WoltlabPluginstoreVerificationFileCacheBuilder::getInstance()->getData(array(
+			'languageID' => WCF::getLanguage()->getObjectID()
+		));
 		
-		$contentProvider = WoltlabPluginStoreActivationContentHandler::getInstance()->getAvailableContentProvider();
-		
-		if (count($contentProvider) > 1) {
-			foreach ($contentProvider as $provider) {
-				$this->availableContentTree[$provider->getProviderName()] = $provider->getSelectOptionsArray();
+		foreach ($this->availableFiles as $fileID => $file) {
+			if (!$file->getContentProvider()->isAccessible($file, WCF::getUser())) {
+				unset($this->availableFiles[$fileID]);
 			}
 		}
-		else {
-			$this->availableContentTree = reset($contentProvider)->getSelectOptionsArray();
-		}
+		
+		parent::readData();
 	}
 	
 	/**
@@ -96,7 +105,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 		parent::readFormParameters();
 		
 		if (isset($_POST['apiKey'])) $this->apiKey = StringUtil::trim($_POST['apiKey']);
-		if (isset($_POST['content'])) $this->content = StringUtil::trim($_POST['content']);
+		if (isset($_POST['pluginstoreFileID'])) $this->fileID = intval($_POST['pluginstoreFileID']);
 		if (isset($_POST['woltlabID'])) $this->woltlabID = intval($_POST['woltlabID']);
 	}
 	
@@ -112,16 +121,37 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 		else if (empty($this->woltlabID)) {
 			throw new UserInputException('woltlabID');
 		}
+		else if (empty($this->fileID)) {
+			throw new UserInputException('pluginstoreFileID');
+		}
+		else if (!isset($this->availableFiles[$this->fileID])) {
+			throw new UserInputException('pluginstoreFileID', 'invalid');
+		}
+		else {
+			$file = $this->availableFiles[$this->fileID];
+			if (!$file->getContentProvider()->isAccessible($file, WCF::getUser())) {
+				throw new UserInputException('pluginstoreFileID', 'invalid');
+			}
+		}
 		
-		$contentParts = explode('-', $this->content);
-		if (!(count($contentParts) == 2)) {
-			throw new UserInputException('content');
+		try {
+			if (!($this->provideAccess = WoltlabVendorAPI::getInstance()->isPurchasedPluginStoreProduct($this->fileID, $this->woltlabID, $this->apiKey))) {
+				throw new UserInputException('pluginstoreFileID', 'notPurchased');
+			}
 		}
-		else if (($contentProvider = WoltlabPluginStoreActivationContentHandler::getInstance()->getContentProviderByObjectTypeName($contentParts[0])) == null) {
-			throw new UserInputException('content', 'invalid');
+		catch (HTTPServerErrorException $e) {
+			if (ENABLE_DEBUG_MODE) {
+				throw $e;
+			}
+			
+			// log exception
+			$e->getExceptionID();
+			
+			// show a userfriendly message instead
+			throw new NamedUserException('wcf.woltlabapi.error.apiServerFailed');
 		}
-		else if (!array_key_exists($this->content, $contentProvider->getSelectOptionsArray())) {
-			throw new UserInputException('content', 'invalid');
+		catch (HTTPUnauthorizedException $e) {
+			throw new UserInputException('woltlabID', 'invalid');
 		}
 	}
 	
@@ -130,6 +160,16 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	 */
 	public function save() {
 		parent::save();
+		
+		if ($this->provideAccess) {
+			$file = $this->availableFiles[$this->fileID];
+			$file->getContentProvider()->provideContent($file, WCF::getUser());
+		}
+		
+		$this->apiKey = $this->woltlabID = '';
+		$this->fileID = 0;
+		
+		WCF::getTPL()->assign('success', true);
 		
 		$this->saved();
 	}

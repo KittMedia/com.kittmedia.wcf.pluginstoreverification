@@ -4,6 +4,7 @@
 		<pagemenuitem name="wcf.header.menu.woltlabPluginStoreVerification">
 			<controller><![CDATA[wcf\form\WoltlabPluginStoreVerificationForm]]></controller>
 			<position>header</position>
+			<options>woltlab_vendor_api_key,woltlab_vendor_id</options>
 		</pagemenuitem>
 	</import>
 </data>

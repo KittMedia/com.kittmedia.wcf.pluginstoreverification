@@ -2,9 +2,9 @@
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/object-type.xsd">
 	<import>
 		<type>
-			<name>com.kittmedia.wcf.pluginstoreverification.content.provider.user.group</name>
+			<name>com.kittmedia.wcf.pluginstoreverification.content.provider.userGroup</name>
 			<definitionname>com.kittmedia.wcf.pluginstoreverification.content.provider</definitionname>
-			<classname>wcf\system\woltlab\plugin\store\activation\content\provider\UserGroupContentProvider</classname>
+			<classname>wcf\system\woltlab\pluginstore\content\provider\UserGroupContentProvider</classname>
 		</type>
 	</import>
 </data>
