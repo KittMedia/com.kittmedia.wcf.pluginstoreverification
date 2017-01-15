@@ -20,7 +20,7 @@
 	</nav>
 </div>
 
-<form method="post" action="{link controller='WoltlabVendorAPIPluginstoreContentProviderFileEdit' id=$fileID}{/link}">
+<form method="post" action="{link controller='WoltlabCustomerVendorAPIPluginstoreContentProviderFileEdit' id=$fileID}{/link}">
 	<div class="container containerPadding marginTop">
 		{event name='beforeFieldsets'}
 		

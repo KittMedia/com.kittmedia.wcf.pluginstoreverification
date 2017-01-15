@@ -37,7 +37,7 @@
 					{foreach from=$objects item=pluginstoreFile}
 						<tr id="pluginstoreFile{@$pluginstoreFile->getObjectID()}">
 							<td class="columnIcon">
-								<a href="{link controller='WoltlabVendorAPIPluginstoreContentProviderFileEdit' id=$pluginstoreFile->getObjectID()}{/link}" class="jsTooltip" title="{lang}wcf.global.button.edit{/lang}">
+								<a href="{link controller='WoltlabCustomerVendorAPIPluginstoreContentProviderFileEdit' id=$pluginstoreFile->getObjectID()}{/link}" class="jsTooltip" title="{lang}wcf.global.button.edit{/lang}">
 									<span class="icon icon16 icon-pencil"></span>
 								</a>
 								
