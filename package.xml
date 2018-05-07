@@ -3,13 +3,13 @@
 	<packageinformation>
 		<packagename>WoltLab Plugin Store Verification</packagename>
 		<packagedescription><![CDATA[]]></packagedescription>
-		<version>1.0.0 RC 1</version>
-		<date>2017-01-13</date>
+		<version>1.0.0 RC 2</version>
+		<date>2018-05-07</date>
 	</packageinformation>
 	
 	<authorinformation>
 		<author><![CDATA[KittMedia]]></author>
-		<authorurl>http://kittmedia.com</authorurl>
+		<authorurl>https://kittmedia.com</authorurl>
 	</authorinformation>
 	
 	<requiredpackages>
@@ -34,6 +34,15 @@
 		<instruction type="acpTemplate">acptemplates.tar</instruction>
 		<instruction type="file">files.tar</instruction>
 		<instruction type="sql">install.sql</instruction>
+		<instruction type="template">templates.tar</instruction>
+	</instructions>
+	
+	<instructions type="update" fromversion="1.0.0 RC 1">
+		<!-- configuration -->
+		<instruction type="language">language/*.xml</instruction>
+		
+		<!-- files -->
+		<instruction type="file">files.tar</instruction>
 		<instruction type="template">templates.tar</instruction>
 	</instructions>
 </package>

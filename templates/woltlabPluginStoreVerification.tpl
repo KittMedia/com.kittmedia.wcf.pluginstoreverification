@@ -52,6 +52,18 @@
 				</dd>
 			</dl>
 			
+			<dl{if $errorField == 'privacyAccept'} class="formError"{/if}>
+				<dt></dt>
+				<dd>
+					<label><input type="checkbox" id="privacyAccept" name="privacyAccept" value="1" required /> {lang}wcf.woltlabapi.pluginstore.privacyInformation{/lang}</label>
+					{if $errorField == 'privacyAccept'}
+						<small class="innerError">
+							{lang}wcf.woltlabapi.pluginstore.privacyInformation.error.{@$errorType}{/lang}
+						</small>
+					{/if}
+				</dd>
+			</dl>
+			
 			{event name='dataFields'}
 		</fieldset>
 		
@@ -63,6 +75,23 @@
 		{@SECURITY_TOKEN_INPUT_TAG}
 	</div>
 </form>
+
+<script data-relocate="true">
+	//<![CDATA[
+	$(function() {
+		var $button = $('.formSubmit > input[type="submit"]').disable();
+		
+	$('#privacyAccept').on('change', function(event) {
+			if ($(this).is(':checked')) {
+				$button.enable();
+			}
+			else {
+				$button.disable();
+			}
+		});
+	});
+	//]]>
+</script>
 
 {include file='footer'}
 

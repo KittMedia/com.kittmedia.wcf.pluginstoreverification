@@ -19,5 +19,8 @@
 		<item name="wcf.woltlabapi.pluginstore.file.productName"><![CDATA[Product]]></item>
 		<item name="wcf.woltlabapi.pluginstore.file.productName.error.invalid"><![CDATA[The selected value is invalid.]]></item>
 		<item name="wcf.woltlabapi.pluginstore.file.productName.error.notPurchased"><![CDATA[The selected product was not purchased through the WoltLab® Plugin Store.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.privacyInformation"><![CDATA[I accept that my data will be sent to a server of the WoltLab GmbH to check whether I have access to the product above. You can find further information in the <a href="{link controller='PrivacyPolicy' application='wcf'}{/link}">Privacy Policy</a>.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.privacyInformation.error.empty"><![CDATA[Without your consent, the data cannot be sent.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.privacyInformation.error.invalid"><![CDATA[Without your consent, the data cannot be sent.]]></item>
 	</category>
 </language>

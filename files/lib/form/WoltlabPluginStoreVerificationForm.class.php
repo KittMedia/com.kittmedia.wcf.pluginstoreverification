@@ -12,9 +12,9 @@ use wcf\util\StringUtil;
 /**
  * Represents the WoltLab(R) plugin store verification form.
  * 
- * @author	Dennis Kraffczyk
- * @copyright	2011-2017 KittMedia Productions
- * @license	Commercial <https://kittblog.com/board/licenses/free.html>
+ * @author	Dennis Kraffczyk, Matthias Kittsteiner
+ * @copyright	2011-2018 KittMedia
+ * @license	Commercial <https://kittmedia.com/licenses/#licenseFree>
  * @package	com.kittmedia.wcf.pluginstoreverification
  * @category	Community Framework
  */
@@ -56,6 +56,12 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	public $fileID = 0;
 	
 	/**
+	 * Checks if the privacy information has been accepted.
+	 * @var		boolean
+	 */
+	public $privacyAccept = false;
+	
+	/**
 	 * Indicates if access to content will be denied or not
 	 * @var		boolean
 	 */
@@ -77,6 +83,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 			'apiKey' => $this->apiKey,
 			'availableFiles' => $this->availableFiles,
 			'fileID' => $this->fileID,
+			'privacyAccept' => $this->privacyAccept,
 			'woltlabID' => $this->woltlabID
 		));
 	}
@@ -106,6 +113,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 		
 		if (isset($_POST['apiKey'])) $this->apiKey = StringUtil::trim($_POST['apiKey']);
 		if (isset($_POST['pluginstoreFileID'])) $this->fileID = intval($_POST['pluginstoreFileID']);
+		if (isset($_POST['privacyAccept'])) $this->privacyAccept = boolval($_POST['privacyAccept']);
 		if (isset($_POST['woltlabID'])) $this->woltlabID = intval($_POST['woltlabID']);
 	}
 	
@@ -115,7 +123,10 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	public function validate() {
 		parent::validate();
 		
-		if (empty($this->apiKey)) {
+		if (!$this->privacyAccept) {
+			throw new UserInputException('privacyAccept');
+		}
+		else if (empty($this->apiKey)) {
 			throw new UserInputException('apiKey');
 		}
 		else if (empty($this->woltlabID)) {
@@ -168,6 +179,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 		
 		$this->apiKey = $this->woltlabID = '';
 		$this->fileID = 0;
+		$this->privacyAccept = false;
 		
 		WCF::getTPL()->assign('success', true);
 		
