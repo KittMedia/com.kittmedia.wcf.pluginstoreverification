@@ -38,6 +38,17 @@ class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListP
 	/**
 	 * @inheritdoc
 	 */
+	public function assignVariables() {
+		if (\strpos($this->sortField, '.') !== false) {
+			$this->sortField = \explode('.', $this->sortField)[1];
+		}
+		
+		parent::assignVariables();
+	}
+	
+	/**
+	 * @inheritdoc
+	 */
 	protected function initObjectList() {
 		parent::initObjectList();
 		
@@ -46,5 +57,16 @@ class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListP
 		$this->objectList->sqlJoins .= 'LEFT JOIN wcf'.WCF_N.'_woltlab_pluginstore_file_content_provider_mapping mapping
 						ON (mapping.fileID = woltlab_pluginstore_file.fileID)';
 		$this->objectList->getConditionBuilder()->add('woltlab_pluginstore_file.isDisabled = ?', [0]);
+	}
+	
+	/**
+	 * @inheritdoc
+	 */
+	public function validateSortField() {
+		parent::validateSortField();
+		
+		if ($this->sortField === 'fileID') {
+			$this->sortField = 'woltlab_pluginstore_file.fileID';
+		}
 	}
 }

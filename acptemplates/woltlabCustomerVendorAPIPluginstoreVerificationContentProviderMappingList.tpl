@@ -25,7 +25,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="columnID columnFileID{if $sortField == 'fileID'} active {@$sortOrder}{/if}" colspan="2"><a href="{link controller='WoltlabVendorAPIPluginstoreFileList'}pageNo={@$pageNo}&sortField=fileID&sortOrder={if $sortField == 'fileID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}{/link}">{lang}wcf.global.objectID{/lang}</a></th>
+					<th class="columnID columnFileID{if $sortField == 'fileID'} active {@$sortOrder}{/if}" colspan="2"><a href="{link controller='WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingList'}pageNo={@$pageNo}&sortField=fileID&sortOrder={if $sortField == 'fileID' && $sortOrder == 'ASC'}DESC{else}ASC{/if}{/link}">{lang}wcf.global.objectID{/lang}</a></th>
 					<th class="columnTitle columnFileName">{lang}wcf.woltlabapi.pluginstore.file.name{/lang}</th>
 					<th class="columnTitle columnContentProviderName">{lang}wcf.woltlabapi.pluginstore.file.contentProvider{/lang}</th>
 					<th class="columnTitle columnContentProviderObjectName">{lang}wcf.woltlabapi.pluginstore.file.contentProvider.objectID{/lang}</th>
