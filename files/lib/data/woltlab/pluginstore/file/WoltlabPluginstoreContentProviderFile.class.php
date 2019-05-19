@@ -10,6 +10,10 @@ use wcf\system\woltlab\pluginstore\content\provider\WoltlabPluginstoreContentPro
  * @copyright	2011-2017 KittMedia Productions
  * @license	Commercial <https://kittblog.com/board/licenses/free.html>
  * @package	com.kittmedia.wcf.pluginstoreverification
+ * @mixin	WoltlabPluginstoreFile
+ * @method	WoltlabPluginstoreFile	getDecoratedObject()
+ * @property-read	integer		$contentProviderObjectTypeID	id of the assigned `com.kittmedia.wcf.pluginstoreverification.content.provider` object type
+ * @property-read	integer		$objectID			id of the assigned object
  */
 class WoltlabPluginstoreContentProviderFile extends DatabaseObjectDecorator {
 	/**
