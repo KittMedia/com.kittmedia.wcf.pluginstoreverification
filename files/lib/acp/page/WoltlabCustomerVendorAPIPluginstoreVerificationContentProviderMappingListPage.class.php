@@ -12,6 +12,7 @@ use wcf\page\SortablePage;
  * @copyright	2011-2017 KittMedia Productions
  * @license	Commercial <https://kittblog.com/board/licenses/free.html>
  * @package	com.kittmedia.wcf.pluginstoreverification
+ * @property	WoltlabPluginstoreFileList	$objectList
  */
 class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListPage extends SortablePage {
 	/**

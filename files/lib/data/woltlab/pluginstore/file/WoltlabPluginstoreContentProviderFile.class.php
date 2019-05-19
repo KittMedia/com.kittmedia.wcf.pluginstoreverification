@@ -1,6 +1,7 @@
 <?php
 namespace wcf\data\woltlab\pluginstore\file;
 use wcf\data\DatabaseObjectDecorator;
+use wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider;
 use wcf\system\woltlab\pluginstore\content\provider\WoltlabPluginstoreContentProviderHandler;
 
 /**
@@ -23,7 +24,7 @@ class WoltlabPluginstoreContentProviderFile extends DatabaseObjectDecorator {
 	
 	/**
 	 * Content provider
-	 * @var		wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider|null
+	 * @var		IWoltlabPluginstoreContentProvider|null
 	 */
 	protected $contentProvider = null;
 	
@@ -38,7 +39,7 @@ class WoltlabPluginstoreContentProviderFile extends DatabaseObjectDecorator {
 	/**
 	 * Returns the content provider of this file or `null`
 	 * if no content provider is assigned to this file.
-	 * @return	wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider|null
+	 * @return	IWoltlabPluginstoreContentProvider|null
 	 */
 	public function getContentProvider() {
 		if ($this->contentProvider === null) {

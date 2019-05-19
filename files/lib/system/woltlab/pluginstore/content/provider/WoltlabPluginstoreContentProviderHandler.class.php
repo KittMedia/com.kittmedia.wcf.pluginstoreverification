@@ -15,6 +15,7 @@ use wcf\system\SingletonFactory;
 class WoltlabPluginstoreContentProviderHandler extends SingletonFactory {
 	/**
 	 * Name of the content provider object type definition
+	 * @var		string
 	 */
 	const OBJECT_TYPE_DEFINITION = 'com.kittmedia.wcf.pluginstoreverification.content.provider';
 	
@@ -59,7 +60,7 @@ class WoltlabPluginstoreContentProviderHandler extends SingletonFactory {
 	 * Returns a content provider by its object type id or `null`
 	 * if no content provider is registered by given `$objectTypeID`.
 	 * @param	integer		$objectTypeID
-	 * @return	wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider|null
+	 * @return	IWoltlabPluginstoreContentProvider|null
 	 */
 	public function getContentProviderByObjectTypeID($objectTypeID) {
 		if (isset($this->contentProviderCache[$objectTypeID])) {

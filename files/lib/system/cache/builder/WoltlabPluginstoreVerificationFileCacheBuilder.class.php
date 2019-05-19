@@ -26,10 +26,14 @@ class WoltlabPluginstoreVerificationFileCacheBuilder extends AbstractCacheBuilde
 		$fileList->getConditionBuilder()->add('woltlab_pluginstore_file.isDisabled = ?', [0]);
 		$fileList->getConditionBuilder()->add('mapping.contentProviderObjectTypeID IS NOT NULL');
 		$fileList->readObjects();
+		
+		/** @var	WoltlabPluginstoreContentProviderFile[]		$files */
 		$files = $fileList->getObjects();
 		
 		// sort by name
 		uasort($files, function($fileA, $fileB) {
+			/** @var	WoltlabPluginstoreContentProviderFile	$fileA */
+			/** @var	WoltlabPluginstoreContentProviderFile	$fileB */
 			if (WCF::getLanguage()->get($fileA->name) == WCF::getLanguage()->get($fileB->name)) {
 				return 0;
 			}

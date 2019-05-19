@@ -32,8 +32,8 @@ interface IWoltlabPluginstoreContentProvider {
 	
 	/**
 	 * Returns true if this content provider is available
-	 * @param	wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile		$file		file for checking the accessible state
-	 * @param	wcf\data\user\User								$user		optional user object
+	 * @param	WoltlabPluginstoreContentProviderFile	$file		file for checking the accessible state
+	 * @param	User					$user		optional user object
 	 * @return	boolean
 	 */
 	public function isAccessible(WoltlabPluginstoreContentProviderFile $file, User $user);
@@ -47,8 +47,8 @@ interface IWoltlabPluginstoreContentProvider {
 	
 	/**
 	 * Provides the access to the related content.
-	 * @param	wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile		$file		file for checking the accessible state
-	 * @param	wcf\data\user\User								$user		optional user object
+	 * @param	WoltlabPluginstoreContentProviderFile	$file		file for checking the accessible state
+	 * @param	User					$user		optional user object
 	 */
 	public function provideContent(WoltlabPluginstoreContentProviderFile $file, User $user);
 }

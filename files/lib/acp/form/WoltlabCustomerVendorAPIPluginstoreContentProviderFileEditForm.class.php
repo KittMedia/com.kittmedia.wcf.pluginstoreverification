@@ -42,7 +42,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	
 	/**
 	 * File
-	 * @var		wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFile
+	 * @var		WoltlabPluginstoreFile
 	 */
 	public $file = null;
 	
