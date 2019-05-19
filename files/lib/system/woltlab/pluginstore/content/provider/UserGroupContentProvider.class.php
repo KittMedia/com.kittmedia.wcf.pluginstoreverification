@@ -17,21 +17,21 @@ use wcf\system\WCF;
  */
 class UserGroupContentProvider extends AbstractWoltlabPluginstoreContentProvider {
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider::__toString()
+	 * @inheritdoc
 	 */
 	public function __toString() {
 		return WCF::getLanguage()->get('wcf.woltlabapi.pluginstore.contentProvider.userGroup');
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider::getSelectOptions()
+	 * @inheritdoc
 	 */
 	public function getSelectOptions() {
 		return UserGroupCacheBuilder::getInstance()->getData([], 'groups');
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider::provideContent()
+	 * @inheritdoc
 	 */
 	public function isAccessible(WoltlabPluginstoreContentProviderFile $file, User $user = null) {
 		$userGroup = new UserGroup($file->objectID);
@@ -39,7 +39,7 @@ class UserGroupContentProvider extends AbstractWoltlabPluginstoreContentProvider
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider::isAccessible()
+	 * @inheritdoc
 	 */
 	public function provideContent(WoltlabPluginstoreContentProviderFile $file, User $user) {
 		$userAction = new UserAction([$user], 'addToGroups', [

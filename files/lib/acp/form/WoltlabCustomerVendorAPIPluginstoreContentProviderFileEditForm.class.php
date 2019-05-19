@@ -19,17 +19,17 @@ use wcf\util\ArrayUtil;
  */
 class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends AbstractForm {
 	/**
-	 * @see		\wcf\page\AbtractPage::$action
+	 * @inheritdoc
 	 */
 	public $action = 'edit';
 	
 	/**
-	 * @see		\wcf\page\AbstractPage::$activeMenuItem
+	 * @inheritdoc
 	 */
 	public $activeMenuItem = 'wcf.acp.menu.link.content.woltlabVendorAPI.pluginstoreVerificationContentProviderMappingList';
 	
 	/**
-	 * @see		\wcf\page\AbstractPage::$templateName
+	 * @inheritdoc
 	 */
 	public $templateName = 'woltlabCustomerVendorAPIPluginstoreContentProviderFileEdit';
 	
@@ -70,7 +70,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	public $contentProviderOptionID = '';
 	
 	/**
-	 * @see		wcf\page\IPage::readParameters()
+	 * @inheritdoc
 	 */
 	public function readParameters() {
 		parent::readParameters();
@@ -84,7 +84,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	}
 	
 	/**
-	 * @see		wcf\page\IPage::readData()
+	 * @inheritdoc
 	 */
 	public function readData() {
 		$this->availableContentProvider[] = WCF::getLanguage()->get('wcf.global.language.noSelection');
@@ -115,7 +115,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	}
 	
 	/**
-	 * @see		wcf\page\IPage::assignVariables()
+	 * @inheritdoc
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -130,7 +130,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	}
 	
 	/**
-	 * @see		wcf\form\IForm::readFormParameters()
+	 * @inheritdoc
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -140,7 +140,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	}
 	
 	/**
-	 * @see		wcf\form\IForm::validate()
+	 * @inheritdoc
 	 */
 	public function validate() {
 		parent::validate();
@@ -163,7 +163,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	}
 	
 	/**
-	 * @see		wcf\form\IForm::validate()
+	 * @inheritdoc
 	 */
 	public function save() {
 		parent::save();

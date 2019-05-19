@@ -20,17 +20,12 @@ use wcf\util\StringUtil;
  */
 class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	/**
-	 * @see		\wcf\page\AbstractPage::$activeMenuItem
-	 */
-	public $activeMenuItem = 'wcf.header.menu.woltlabPluginStoreVerification';
-	
-	/**
-	 * @see		\wcf\page\AbstractPage::$loginRequired
+	 * @inheritdoc
 	 */
 	public $loginRequired = true;
 	
 	/**
-	 * @see		\wcf\page\AbstractPage::$neededModules
+	 * @inheritdoc
 	 */
 	public $neededModules = [
 		'WOLTLAB_VENDOR_ID',
@@ -74,7 +69,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	public $woltlabID = '';
 	
 	/**
-	 * @see		\wcf\page\IPage::assignVariables()
+	 * @inheritdoc
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
@@ -89,7 +84,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see		\wcf\page\IPage::readData()
+	 * @inheritdoc
 	 */
 	public function readData() {
 		$this->availableFiles = WoltlabPluginstoreVerificationFileCacheBuilder::getInstance()->getData([
@@ -106,7 +101,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see		\wcf\form\IForm::readFormParameters()
+	 * @inheritdoc
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
@@ -118,7 +113,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see		\wcf\form\IForm::validate()
+	 * @inheritdoc
 	 */
 	public function validate() {
 		parent::validate();
@@ -167,7 +162,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	}
 	
 	/**
-	 * @see		\wcf\form\IForm::save()
+	 * @inheritdoc
 	 */
 	public function save() {
 		parent::save();

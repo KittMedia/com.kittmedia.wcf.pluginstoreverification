@@ -13,35 +13,35 @@ use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile;
  */
 abstract class AbstractWoltlabPluginstoreContentProvider implements IWoltlabPluginstoreContentProvider {
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginStoreContentProvider::__toString()
+	 * @inheritdoc
 	 */
 	public function __toString() {
 		return '';
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginStoreContentProvider::getSelectOptions()
+	 * @inheritdoc
 	 */
 	public function getSelectOptions() {
 		return [];
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginStoreContentProvider::isAccessible()
+	 * @inheritdoc
 	 */
 	public function isAccessible(WoltlabPluginstoreContentProviderFile $file, User $user) {
 		return false;
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginStoreContentProvider::isAvailable()
+	 * @inheritdoc
 	 */
 	public function isAvailable() {
 		return !empty($this->getSelectOptions());
 	}
 	
 	/**
-	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginStoreContentProvider::provideContent()
+	 * @inheritdoc
 	 */
 	abstract function provideContent(WoltlabPluginstoreContentProviderFile $file, User $user);
 }

@@ -30,7 +30,7 @@ class WoltlabPluginstoreContentProviderHandler extends SingletonFactory {
 	protected $contentProviderCache = null;
 	
 	/**
-	 * @see		\wcf\system\SingletonFactory::init()
+	 * @inheritdoc
 	 */
 	protected function init() {
 		$this->contentProviderCache = ObjectTypeCache::getInstance()->getObjectTypes(static::OBJECT_TYPE_DEFINITION);

@@ -17,7 +17,7 @@ use wcf\system\woltlab\pluginstore\content\provider\WoltlabPluginstoreContentPro
  */
 class WoltlabPluginstoreContentProviderFile extends DatabaseObjectDecorator {
 	/**
-	 * @see		\wcf\data\DatabaseObjectDecorator::$baseClass
+	 * @inheritdoc
 	 */
 	protected static $baseClass = 'wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFile';
 	

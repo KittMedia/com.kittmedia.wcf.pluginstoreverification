@@ -13,27 +13,27 @@ use wcf\page\SortablePage;
  */
 class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListPage extends SortablePage {
 	/**
-	 * @see		\wcf\page\AbstractPage::$activeMenuItem
+	 * @inheritdoc
 	 */
 	public $activeMenuItem = 'wcf.acp.menu.link.content.woltlabVendorAPI.pluginstoreVerificationContentProviderMappingList';
 	
 	/**
-	 * @see		\wcf\page\SortablePage::$defaultSortField
+	 * @inheritdoc
 	 */
 	public $defaultSortField = 'woltlab_pluginstore_file.fileID';
 	
 	/**
-	 * @see		\wcf\page\MultipleLinkPage::$objectListClassName
+	 * @inheritdoc
 	 */
 	public $objectListClassName = 'wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFileList';
 	
 	/**
-	 * @see		\wcf\page\SortablePage::$validSortFields
+	 * @inheritdoc
 	 */
 	public $validSortFields = ['woltlab_pluginstore_file.fileID'];
 	
 	/**
-	 * @see		\wcf\page\MultipleLinkPage::initObjectList()
+	 * @inheritdoc
 	 */
 	protected function initObjectList() {
 		parent::initObjectList();

@@ -13,7 +13,7 @@ use wcf\system\WCF;
  */
 class WoltlabPluginstoreVerificationFileCacheBuilder extends AbstractCacheBuilder {
 	/**
-	 * @see		\wcf\system\cache\builder\AbstractCacheBuilder::rebuild()
+	 * @inheritdoc
 	 */
 	protected function rebuild(array $parameters) {
 		$fileList = new WoltlabPluginstoreFileList();
