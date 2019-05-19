@@ -1,5 +1,7 @@
 <?php
 namespace wcf\acp\page;
+use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile;
+use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFileList;
 use wcf\page\SortablePage;
 
 /**
@@ -25,7 +27,7 @@ class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListP
 	/**
 	 * @inheritdoc
 	 */
-	public $objectListClassName = 'wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFileList';
+	public $objectListClassName = WoltlabPluginstoreFileList::class;
 	
 	/**
 	 * @inheritdoc
@@ -38,7 +40,7 @@ class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListP
 	protected function initObjectList() {
 		parent::initObjectList();
 		
-		$this->objectList->decoratorClassName = 'wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile';
+		$this->objectList->decoratorClassName = WoltlabPluginstoreContentProviderFile::class;
 		$this->objectList->sqlSelects .= 'mapping.*';
 		$this->objectList->sqlJoins .= 'LEFT JOIN wcf'.WCF_N.'_woltlab_pluginstore_file_content_provider_mapping mapping
 						ON (mapping.fileID = woltlab_pluginstore_file.fileID)';

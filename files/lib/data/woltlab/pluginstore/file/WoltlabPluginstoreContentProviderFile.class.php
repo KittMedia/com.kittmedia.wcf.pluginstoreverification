@@ -19,7 +19,7 @@ class WoltlabPluginstoreContentProviderFile extends DatabaseObjectDecorator {
 	/**
 	 * @inheritdoc
 	 */
-	protected static $baseClass = 'wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFile';
+	protected static $baseClass = WoltlabPluginstoreFile::class;
 	
 	/**
 	 * Content provider

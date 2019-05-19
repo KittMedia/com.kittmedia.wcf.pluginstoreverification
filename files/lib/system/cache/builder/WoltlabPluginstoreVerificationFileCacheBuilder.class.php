@@ -1,5 +1,6 @@
 <?php
 namespace wcf\system\cache\builder;
+use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile;
 use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreFileList;
 use wcf\system\WCF;
 
@@ -17,7 +18,7 @@ class WoltlabPluginstoreVerificationFileCacheBuilder extends AbstractCacheBuilde
 	 */
 	protected function rebuild(array $parameters) {
 		$fileList = new WoltlabPluginstoreFileList();
-		$fileList->decoratorClassName = 'wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile';
+		$fileList->decoratorClassName = WoltlabPluginstoreContentProviderFile::class;
 		$fileList->sqlSelects .= 'mapping.*';
 		$fileList->sqlJoins .= 'LEFT JOIN wcf'.WCF_N.'_woltlab_pluginstore_file_content_provider_mapping mapping
 						ON (mapping.fileID = woltlab_pluginstore_file.fileID)';
