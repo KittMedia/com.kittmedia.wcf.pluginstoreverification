@@ -22,7 +22,7 @@ class WoltlabPluginstoreVerificationFileCacheBuilder extends AbstractCacheBuilde
 		$fileList->sqlJoins .= 'LEFT JOIN wcf'.WCF_N.'_woltlab_pluginstore_file_content_provider_mapping mapping
 						ON (mapping.fileID = woltlab_pluginstore_file.fileID)';
 		$fileList->sqlConditionJoins = $fileList->sqlJoins;
-		$fileList->getConditionBuilder()->add('woltlab_pluginstore_file.isDisabled = ?', array(0));
+		$fileList->getConditionBuilder()->add('woltlab_pluginstore_file.isDisabled = ?', [0]);
 		$fileList->getConditionBuilder()->add('mapping.contentProviderObjectTypeID IS NOT NULL');
 		$fileList->readObjects();
 		$files = $fileList->getObjects();

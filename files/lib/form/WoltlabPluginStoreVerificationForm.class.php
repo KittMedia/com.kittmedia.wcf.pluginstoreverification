@@ -32,16 +32,16 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	/**
 	 * @see		\wcf\page\AbstractPage::$neededModules
 	 */
-	public $neededModules = array(
+	public $neededModules = [
 		'WOLTLAB_VENDOR_ID',
 		'WOLTLAB_VENDOR_API_KEY'
-	);
+	];
 	
 	/**
 	 * List of available files
 	 * @var		array<\wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile>
 	 */
-	public $availableFiles = array();
+	public $availableFiles = [];
 	
 	/**
 	 * buyers api key
@@ -79,22 +79,22 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	public function assignVariables() {
 		parent::assignVariables();
 		
-		WCF::getTPL()->assign(array(
+		WCF::getTPL()->assign([
 			'apiKey' => $this->apiKey,
 			'availableFiles' => $this->availableFiles,
 			'fileID' => $this->fileID,
 			'privacyAccept' => $this->privacyAccept,
 			'woltlabID' => $this->woltlabID
-		));
+		]);
 	}
 	
 	/**
 	 * @see		\wcf\page\IPage::readData()
 	 */
 	public function readData() {
-		$this->availableFiles = WoltlabPluginstoreVerificationFileCacheBuilder::getInstance()->getData(array(
+		$this->availableFiles = WoltlabPluginstoreVerificationFileCacheBuilder::getInstance()->getData([
 			'languageID' => WCF::getLanguage()->getObjectID()
-		));
+		]);
 		
 		foreach ($this->availableFiles as $fileID => $file) {
 			if (!$file->getContentProvider()->isAccessible($file, WCF::getUser())) {

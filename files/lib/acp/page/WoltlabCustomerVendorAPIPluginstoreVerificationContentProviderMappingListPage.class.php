@@ -30,7 +30,7 @@ class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListP
 	/**
 	 * @see		\wcf\page\SortablePage::$validSortFields
 	 */
-	public $validSortFields = array('woltlab_pluginstore_file.fileID');
+	public $validSortFields = ['woltlab_pluginstore_file.fileID'];
 	
 	/**
 	 * @see		\wcf\page\MultipleLinkPage::initObjectList()
@@ -42,6 +42,6 @@ class WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingListP
 		$this->objectList->sqlSelects .= 'mapping.*';
 		$this->objectList->sqlJoins .= 'LEFT JOIN wcf'.WCF_N.'_woltlab_pluginstore_file_content_provider_mapping mapping
 						ON (mapping.fileID = woltlab_pluginstore_file.fileID)';
-		$this->objectList->getConditionBuilder()->add('woltlab_pluginstore_file.isDisabled = ?', array(0));
+		$this->objectList->getConditionBuilder()->add('woltlab_pluginstore_file.isDisabled = ?', [0]);
 	}
 }

@@ -27,7 +27,7 @@ class UserGroupContentProvider extends AbstractWoltlabPluginstoreContentProvider
 	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider::getSelectOptions()
 	 */
 	public function getSelectOptions() {
-		return UserGroupCacheBuilder::getInstance()->getData(array(), 'groups');
+		return UserGroupCacheBuilder::getInstance()->getData([], 'groups');
 	}
 	
 	/**
@@ -42,11 +42,11 @@ class UserGroupContentProvider extends AbstractWoltlabPluginstoreContentProvider
 	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider::isAccessible()
 	 */
 	public function provideContent(WoltlabPluginstoreContentProviderFile $file, User $user) {
-		$userAction = new UserAction(array($user), 'addToGroups', array(
+		$userAction = new UserAction([$user], 'addToGroups', [
 			'addDefaultGroups' => false,
 			'deleteOldGroups' => false,
-			'groups' => array($file->objectID)
-		));
+			'groups' => [$file->objectID]
+		]);
 		$userAction->executeAction();
 	}
 }

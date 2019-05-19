@@ -61,7 +61,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	 * List of selected options (not supported currently)
 	 * @var		array<integer>
 	 */
-	public $contentProviderOption = array();
+	public $contentProviderOption = [];
 	
 	/**
 	 * Selected option id
@@ -94,7 +94,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 		if (empty($_POST)) {
 			// read current mapping
 			$conditions = new PreparedStatementConditionBuilder();
-			$conditions->add('fileID = ?', array($this->fileID));
+			$conditions->add('fileID = ?', [$this->fileID]);
 			
 			$sql = "SELECT		*
 				FROM		wcf".WCF_N."_woltlab_pluginstore_file_content_provider_mapping
@@ -103,10 +103,10 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 			$statement->execute($conditions->getParameters());
 			
 			if (!($row = $statement->fetchArray())) {
-				$row = array(
+				$row = [
 					'contentProviderObjectTypeID' => 0,
 					'objectID' => 0
-				);
+				];
 			}
 			
 			$this->contentProviderID = $row['contentProviderObjectTypeID'];
@@ -120,13 +120,13 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	public function assignVariables() {
 		parent::assignVariables();
 		
-		WCF::getTPL()->assign(array(
+		WCF::getTPL()->assign([
 			'availableContentProvider' => $this->availableContentProvider,
 			'contentProviderID' => $this->contentProviderID,
 			'contentProviderOptionID' => $this->contentProviderOptionID,
 			'file' => $this->file,
 			'fileID' => $this->file->getObjectID()
-		));
+		]);
 	}
 	
 	/**
@@ -170,7 +170,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 		
 		// delete all mapping entries from database
 		$conditions = new PreparedStatementConditionBuilder();
-		$conditions->add('fileID = ?', array($this->fileID));
+		$conditions->add('fileID = ?', [$this->fileID]);
 		$sql = "DELETE FROM	wcf".WCF_N."_woltlab_pluginstore_file_content_provider_mapping
 			".$conditions;
 		WCF::getDB()->prepareStatement($sql)->execute($conditions->getParameters());
@@ -180,11 +180,11 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 						(fileID, contentProviderObjectTypeID, objectID)
 				VALUES		(?, ?, ?)";
 			$statement = WCF::getDB()->prepareStatement($sql);
-			$statement->execute(array(
+			$statement->execute([
 				$this->file->getObjectID(),
 				$this->contentProviderID,
 				$this->contentProviderOptionID
-			));
+			]);
 		}
 		
 		WoltlabPluginstoreVerificationFileCacheBuilder::getInstance()->reset();

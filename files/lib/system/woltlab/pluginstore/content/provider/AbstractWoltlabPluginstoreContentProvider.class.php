@@ -23,7 +23,7 @@ abstract class AbstractWoltlabPluginstoreContentProvider implements IWoltlabPlug
 	 * @see		\wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginStoreContentProvider::getSelectOptions()
 	 */
 	public function getSelectOptions() {
-		return array();
+		return [];
 	}
 	
 	/**
