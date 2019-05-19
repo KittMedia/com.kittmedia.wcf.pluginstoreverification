@@ -1,5 +1,6 @@
 <?php
 namespace wcf\form;
+use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile;
 use wcf\system\api\woltlab\vendor\WoltlabVendorAPI;
 use wcf\system\exception\HTTPServerErrorException;
 use wcf\system\exception\HTTPUnauthorizedException;
@@ -34,7 +35,7 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	
 	/**
 	 * List of available files
-	 * @var		array<\wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile>
+	 * @var		WoltlabPluginstoreContentProviderFile[]
 	 */
 	public $availableFiles = [];
 	

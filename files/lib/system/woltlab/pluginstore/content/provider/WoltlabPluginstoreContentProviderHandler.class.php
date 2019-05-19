@@ -1,5 +1,6 @@
 <?php
 namespace wcf\system\woltlab\pluginstore\content\provider;
+use wcf\data\object\type\ObjectType;
 use wcf\data\object\type\ObjectTypeCache;
 use wcf\system\SingletonFactory;
 
@@ -19,13 +20,13 @@ class WoltlabPluginstoreContentProviderHandler extends SingletonFactory {
 	
 	/**
 	 * Available content provider
-	 * @var		array<wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider>
+	 * @var		IWoltlabPluginstoreContentProvider[]
 	 */
 	protected $availableContentProvider = null;
 	
 	/**
 	 * Content provider object types
-	 * @var		array<wcf\data\object\type\ObjectType>
+	 * @var		ObjectType[]
 	 */
 	protected $contentProviderCache = null;
 	
@@ -48,7 +49,7 @@ class WoltlabPluginstoreContentProviderHandler extends SingletonFactory {
 	/**
 	 * Returns a list of available content provider.
 	 * Content provider are available if their `isAvailable`–method returns `true`.
-	 * @return	array<wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider>
+	 * @return	IWoltlabPluginstoreContentProvider[]
 	 */
 	public function getAvailableContentProvider() {
 		return $this->availableContentProvider;

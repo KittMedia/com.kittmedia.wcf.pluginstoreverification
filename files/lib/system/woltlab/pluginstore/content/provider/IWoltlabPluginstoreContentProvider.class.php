@@ -26,7 +26,7 @@ interface IWoltlabPluginstoreContentProvider {
 	 * 		uniqueID => description,
 	 * 		…
 	 * 	)
-	 * @return	array<mixed>
+	 * @return	mixed[]
 	 */
 	public function getSelectOptions();
 	

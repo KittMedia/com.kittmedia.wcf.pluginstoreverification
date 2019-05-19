@@ -5,6 +5,7 @@ use wcf\form\AbstractForm;
 use wcf\system\cache\builder\WoltlabPluginstoreVerificationFileCacheBuilder;
 use wcf\system\database\util\PreparedStatementConditionBuilder;
 use wcf\system\exception\UserInputException;
+use wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider;
 use wcf\system\woltlab\pluginstore\content\provider\WoltlabPluginstoreContentProviderHandler;
 use wcf\system\WCF;
 use wcf\util\ArrayUtil;
@@ -35,7 +36,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	
 	/**
 	 * List of available content provider
-	 * @var		array<wcf\system\woltlab\pluginstore\content\provider\IWoltlabPluginstoreContentProvider>
+	 * @var		IWoltlabPluginstoreContentProvider[]
 	 */
 	public $availableContentProvider = null;
 	
@@ -59,7 +60,7 @@ class WoltlabCustomerVendorAPIPluginstoreContentProviderFileEditForm extends Abs
 	
 	/**
 	 * List of selected options (not supported currently)
-	 * @var		array<integer>
+	 * @var		integer[]
 	 */
 	public $contentProviderOption = [];
 	
