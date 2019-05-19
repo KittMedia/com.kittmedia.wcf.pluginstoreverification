@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/menuItem.xsd">
+	<import>
+		<!-- com.woltlab.wcf.FooterMenu -->
+		<item identifier="com.kittmedia.wcf.pluginstoreverification.WoltLabPluginstoreVerification">
+			<menu>com.woltlab.wcf.FooterMenu</menu>
+			<title language="de">WoltLab® Plugin-Store – Supportfreischaltung</title>
+			<title language="en">WoltLab® Plugin-Store Verification</title>
+			<page>com.kittmedia.wcf.pluginstoreverification.WoltLabPluginstoreVerification</page>
+		</item>
+		<!-- /com.woltlab.wcf.FooterMenu -->
+	</import>
+</data>

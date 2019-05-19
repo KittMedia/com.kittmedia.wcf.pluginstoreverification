@@ -1,25 +1,27 @@
 {include file='header' pageTitle='wcf.acp.menu.link.content.woltlabVendorAPI.pluginstoreVerificationContentProviderMappingList'}
 
-<header class="boxHeadline">
-	<h1>{lang}wcf.acp.menu.link.content.woltlabVendorAPI.pluginstoreVerificationContentProviderMappingList{/lang}</h1>
+<header class="contentHeader">
+	<div class="contentHeaderTitle">
+		<h1 class="contentTitle">{$pageTitle|language}</h1>
+	</div>
+	
+	{hascontent}
+		<nav class="contentHeaderNavigation">
+			<ul>
+				{content}{event name='contentHeaderNavigation'}{/content}
+			</ul>
+		</nav>
+	{/hascontent}
 </header>
 
-<div class="contentNavigation">
-	{pages print=true assign=pagesLinks controller='WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingList' link="pageNo=%d&sortField=$sortField&sortOrder=$sortOrder"}
-	
-	<nav>
-		<ul>
-			{event name='contentNavigationButtonsTop'}
-		</ul>
-	</nav>
-</div>
-
 {hascontent}
-	<div class="tabularBox tabularBoxTitle marginTop">
-		<header>
-			<h2>{lang}wcf.acp.menu.link.content.woltlabVendorAPI.pluginstoreVerificationContentProviderMappingList{/lang} <span class="badge badgeInverse">{#$items}</span></h2>
-		</header>
-		
+	<div class="paginationTop">
+		{content}{pages print=true assign=pagesLinks controller='WoltlabCustomerVendorAPIPluginstoreVerificationContentProviderMappingList' link="pageNo=%d&sortField=$sortField&sortOrder=$sortOrder"}{/content}
+	</div>
+{/hascontent}
+
+{if $objects|count}
+	<div class="section tabularBox">
 		<table class="table">
 			<thead>
 				<tr>
@@ -33,40 +35,44 @@
 			</thead>
 			
 			<tbody>
-				{content}
-					{foreach from=$objects item=pluginstoreFile}
-						<tr id="pluginstoreFile{@$pluginstoreFile->getObjectID()}">
-							<td class="columnIcon">
-								<a href="{link controller='WoltlabCustomerVendorAPIPluginstoreContentProviderFileEdit' id=$pluginstoreFile->getObjectID()}{/link}" class="jsTooltip" title="{lang}wcf.global.button.edit{/lang}">
-									<span class="icon icon16 icon-pencil"></span>
-								</a>
-								
-								{event name='rowButtons'}
-							</td>
-							<td class="columnID columnFileID">{@$pluginstoreFile->getObjectID()}</td>
-							<td class="columnText columnFileName">{$pluginstoreFile->name|language}</td>
-							<td class="columnTitle columnContentProviderName">{@$pluginstoreFile->getContentProviderName()}</td>
-							<td class="columnTitle columnContentProviderObjectName">{@$pluginstoreFile->getContentProviderObjectName()}</td>
+				{foreach from=$objects item=pluginstoreFile}
+					<tr id="pluginstoreFile{@$pluginstoreFile->getObjectID()}">
+						<td class="columnIcon">
+							<a href="{link controller='WoltlabCustomerVendorAPIPluginstoreContentProviderFileEdit' id=$pluginstoreFile->getObjectID()}{/link}" class="jsTooltip" title="{lang}wcf.global.button.edit{/lang}">
+								<span class="icon icon16 fa-pencil"></span>
+							</a>
 							
-							{event name='columns'}
-						</tr>
-					{/foreach}
-				{/content}
+							{event name='rowButtons'}
+						</td>
+						<td class="columnID columnFileID">{@$pluginstoreFile->getObjectID()}</td>
+						<td class="columnText columnFileName">{$pluginstoreFile->name|language}</td>
+						<td class="columnTitle columnContentProviderName">{@$pluginstoreFile->getContentProviderName()}</td>
+						<td class="columnTitle columnContentProviderObjectName">{@$pluginstoreFile->getContentProviderObjectName()}</td>
+						
+						{event name='columns'}
+					</tr>
+				{/foreach}
 			</tbody>
 		</table>
 	</div>
 	
-	<div class="contentNavigation">
-		{@$pagesLinks}
+	<footer class="contentFooter">
+		{hascontent}
+			<div class="paginationBottom">
+				{content}{@$pagesLinks}{/content}
+			</div>
+		{/hascontent}
 		
-		<nav>
-			<ul>
-				{event name='contentNavigationButtonsBottom'}
-			</ul>
-		</nav>
-	</div>
-{hascontentelse}
+		{hascontent}
+			<nav class="contentFooterNavigation">
+				<ul>
+					{content}{event name='contentFooterNavigation'}{/content}
+				</ul>
+			</nav>
+		{/hascontent}
+	</footer>
+{else}
 	<p class="info">{lang}wcf.global.noItems{/lang}</p>
-{/hascontent}
+{/if}
 
 {include file='footer'}

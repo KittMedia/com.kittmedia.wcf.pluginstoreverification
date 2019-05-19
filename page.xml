@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/page.xsd">
+	<import>
+		<page identifier="com.kittmedia.wcf.pluginstoreverification.WoltLabPluginstoreVerification">
+			<pageType>system</pageType>
+			<controller>wcf\form\WoltlabPluginStoreVerificationForm</controller>
+			<name language="de">WoltLab® Plugin-Store – Supportfreischaltung</name>
+			<name language="en">WoltLab® Plugin-Store Verification</name>
+			
+			<content language="en">
+				<title>WoltLab® Plugin-Store Verification</title>
+			</content>
+			<content language="de">
+				<title>WoltLab® Plugin-Store – Supportfreischaltung</title>
+			</content>
+		</page>
+	</import>
+</data>

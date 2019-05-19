@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd" languagecode="en">
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/language.xsd" languagecode="en">
 	<category name="wcf.acp.menu">
 		<item name="wcf.acp.menu.link.content.woltlabVendorAPI.pluginstoreVerificationContentProviderMappingList"><![CDATA[Plugin–Store - Support Activation Assignment]]></item>
-	</category>
-	
-	<category name="wcf.header.menu">
-		<item name="wcf.header.menu.woltlabPluginStoreVerification"><![CDATA[WoltLab® Plugin-Store Verification]]></item>
 	</category>
 	
 	<category name="wcf.woltlabapi.pluginstore">
