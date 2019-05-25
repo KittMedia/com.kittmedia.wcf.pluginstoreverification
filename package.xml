@@ -37,4 +37,15 @@
 		<instruction type="sql" />
 		<instruction type="template" />
 	</instructions>
+	
+	<instructions type="update" fromversion="1.0.0 RC 2">
+		<!-- configuration -->
+		<instruction type="page" /><!-- do not relocate -->
+		<instruction type="menuItem" /><!-- do not relocate -->
+		
+		<!-- files -->
+		<instruction type="acpTemplate" />
+		<instruction type="file" />
+		<instruction type="template" />
+	</instructions>
 </package>
