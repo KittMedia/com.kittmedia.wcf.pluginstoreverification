@@ -17,7 +17,7 @@
 	</compatibility>
 	
 	<requiredpackages>
-		<requiredpackage minversion="3.0.18">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="3.1.11">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="2.1.0 Alpha 1">com.kittmedia.wcf.woltlabapi</requiredpackage>
 	</requiredpackages>
 	
