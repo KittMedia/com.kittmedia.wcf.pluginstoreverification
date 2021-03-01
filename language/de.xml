@@ -5,7 +5,7 @@
 	</category>
 	
 	<category name="wcf.woltlabapi.pluginstore">
-		<item name="wcf.woltlabapi.pluginstore.contentProvider.success"><![CDATA[Sie wurden erfolgreich verifiziert.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.contentProvider.success"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Du wurdest{else}Sie wurden{/if} erfolgreich verifiziert.]]></item>
 		<item name="wcf.woltlabapi.pluginstore.contentProvider.userGroup"><![CDATA[Benutzergruppen]]></item>
 		<item name="wcf.woltlabapi.pluginstore.file.contentProvider"><![CDATA[Zuordnungsart]]></item>
 		<item name="wcf.woltlabapi.pluginstore.file.contentProvider.error.invalid"><![CDATA[Der ausgewählte Wert ist ungültig.]]></item>
@@ -14,9 +14,9 @@
 		<item name="wcf.woltlabapi.pluginstore.file.contentProvider.objectID.error.invalid"><![CDATA[Der ausgewählte Wert ist ungültig.]]></item>
 		<item name="wcf.woltlabapi.pluginstore.file.productName"><![CDATA[Produkt]]></item>
 		<item name="wcf.woltlabapi.pluginstore.file.productName.error.invalid"><![CDATA[Der ausgewählte Wert ist ungültig.]]></item>
-		<item name="wcf.woltlabapi.pluginstore.file.productName.error.notPurchased"><![CDATA[Das ausgewählte Produkt wurde über den WoltLab® Plugin-Store nicht erworben.]]></item>
-		<item name="wcf.woltlabapi.pluginstore.privacyInformation"><![CDATA[Ich akzeptiere, dass meine Daten zu den Servern der WoltLab GmbH gesendet werden, um zu prüfen, ob ich eine Lizenz für das oben angegebene Produkt besitze. Weitere Informationen erhalten Sie in unserer <a href="{link controller='PrivacyPolicy' application='wcf'}{/link}">Datenschutzerklärung</a>.]]></item>
-		<item name="wcf.woltlabapi.pluginstore.privacyInformation.error.empty"><![CDATA[Ohne Ihr Einverständnis kann das Formular nicht abgesendet werden.]]></item>
-		<item name="wcf.woltlabapi.pluginstore.privacyInformation.error.invalid"><![CDATA[Ohne Ihr Einverständnis kann das Formular nicht abgesendet werden.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.file.productName.error.notPurchased"><![CDATA[Das ausgewählte Produkt wurde nicht über den WoltLab® Plugin-Store erworben.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.privacyInformation"><![CDATA[Ich akzeptiere, dass meine Daten zu den Servern der WoltLab GmbH gesendet werden, um zu prüfen, ob ich eine Lizenz für das oben angegebene Produkt besitze. Weitere Informationen {if LANGUAGE_USE_INFORMAL_VARIANT}erhältst du{else}erhalten Sie{/if} in unserer <a href="{link controller='PrivacyPolicy' application='wcf'}{/link}">Datenschutzerklärung</a>.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.privacyInformation.error.empty"><![CDATA[Ohne {if LANGUAGE_USE_INFORMAL_VARIANT}dein{else}Ihr{/if} Einverständnis kann das Formular nicht abgesendet werden.]]></item>
+		<item name="wcf.woltlabapi.pluginstore.privacyInformation.error.invalid"><![CDATA[Ohne {if LANGUAGE_USE_INFORMAL_VARIANT}dein{else}Ihr{/if} Einverständnis kann das Formular nicht abgesendet werden.]]></item>
 	</category>
 </language>
