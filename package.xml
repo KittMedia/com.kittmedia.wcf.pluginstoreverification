@@ -3,8 +3,8 @@
 	<packageinformation>
 		<packagename>WoltLab Plugin Store Verification</packagename>
 		<packagedescription><![CDATA[]]></packagedescription>
-		<version>2.2.0</version>
-		<date>2021-01-05</date>
+		<version>2.2.1</version>
+		<date>2021-03-01</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -43,8 +43,11 @@
 		<instruction type="language" />
 	</instructions>
 	
-	<instructions type="update" fromversion="2.2.0 Alpha 1">
-		<!-- dummy instruction -->
+	<instructions type="update" fromversion="2.2.0">
+		<!-- configuration -->
 		<instruction type="language" />
+		
+		<!-- files -->
+		<instruction type="template" />
 	</instructions>
 </package>
