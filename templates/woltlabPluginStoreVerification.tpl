@@ -48,7 +48,7 @@
 	{event name='afterSections'}
 	
 	<div class="formSubmit">
-		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" accesskey="s" />
+		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" accesskey="s" disabled />
 		{@SECURITY_TOKEN_INPUT_TAG}
 	</div>
 </form>
@@ -56,7 +56,7 @@
 {include file='footer'}
 
 <script data-relocate="true">
-	require(['Core'], function(Core) {
+	require(['Core'], function() {
 		new WCF.Message.FormGuard();
 		
 		var privacyAccept = elById('privacyAccept');
@@ -70,7 +70,5 @@
 				submitButton.removeAttribute('disabled');
 			}
 		});
-		
-		Core.triggerEvent(privacyAccept, WCF_CLICK_EVENT);
 	});
 </script>
