@@ -23,7 +23,7 @@
 						{if $errorType == 'empty'}
 							{lang}wcf.global.form.error.{$errorType}{/lang}
 						{else}
-							{lang}wcf.woltlabapi.pluginstore.file.productName.name.error.{$errorType}{/lang}
+							{lang}wcf.woltlabapi.pluginstore.file.productName.error.{$errorType}{/lang}
 						{/if}
 					</small>
 				{/if}
