@@ -9,15 +9,16 @@ use wcf\system\exception\UserInputException;
 use wcf\system\cache\builder\WoltlabPluginstoreVerificationFileCacheBuilder;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
+use function wcf\functions\exception\logThrowable;
 
 /**
  * Represents the WoltLab(R) plugin store verification form.
  * 
  * @author	Dennis Kraffczyk, Matthias Kittsteiner
- * @copyright	2011-2018 KittMedia
+ * @copyright	2011-2021 KittMedia
  * @license	Commercial <https://kittmedia.com/licenses/#licenseFree>
  * @package	com.kittmedia.wcf.pluginstoreverification
- * @category	Community Framework
+ * @category	Suite Core
  */
 class WoltlabPluginStoreVerificationForm extends AbstractForm {
 	/**
@@ -152,13 +153,23 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 			}
 			
 			// log exception
-			$e->getExceptionID();
+			logThrowable($e);
 			
-			// show a userfriendly message instead
-			throw new NamedUserException('wcf.woltlabapi.error.apiServerFailed');
+			// show a user friendly message instead
+			throw new NamedUserException(WCF::getLanguage()->getDynamicVariable('wcf.woltlabapi.error.apiServerFailed'));
 		}
 		catch (HTTPUnauthorizedException $e) {
 			throw new UserInputException('woltlabID', 'invalid');
+		}
+		catch (\Exception $e) {
+			if (ENABLE_DEBUG_MODE) {
+				throw $e;
+			}
+			
+			// log exception
+			logThrowable($e);
+			
+			throw new NamedUserException(WCF::getLanguage()->getDynamicVariable('wcf.woltlabapi.error.apiServerFailed'));
 		}
 	}
 	
