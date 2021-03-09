@@ -6,7 +6,7 @@
 			<controller>wcf\form\WoltlabPluginStoreVerificationForm</controller>
 			<name language="de">WoltLab® Plugin-Store – Supportfreischaltung</name>
 			<name language="en">WoltLab® Plugin-Store Verification</name>
-			
+			<handler>wcf\system\page\handler\WoltlabPluginStoreVerificationFormPageHandler</handler>
 			<content language="en">
 				<title>WoltLab® Plugin-Store Verification</title>
 			</content>

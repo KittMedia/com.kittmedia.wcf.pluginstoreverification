@@ -4,9 +4,11 @@ use wcf\data\woltlab\pluginstore\file\WoltlabPluginstoreContentProviderFile;
 use wcf\system\api\woltlab\vendor\WoltlabVendorAPI;
 use wcf\system\exception\HTTPServerErrorException;
 use wcf\system\exception\HTTPUnauthorizedException;
+use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\NamedUserException;
 use wcf\system\exception\UserInputException;
 use wcf\system\cache\builder\WoltlabPluginstoreVerificationFileCacheBuilder;
+use wcf\system\page\handler\WoltlabPluginStoreVerificationFormPageHandler;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 use function wcf\functions\exception\logThrowable;
@@ -16,7 +18,7 @@ use function wcf\functions\exception\logThrowable;
  * 
  * @author	Dennis Kraffczyk, Matthias Kittsteiner
  * @copyright	2011-2021 KittMedia
- * @license	Commercial <https://kittmedia.com/licenses/#licenseFree>
+ * @license	Free <https://shop.kittmedia.com/core/licenses/#licenseFree>
  * @package	com.kittmedia.wcf.pluginstoreverification
  * @category	Suite Core
  */
@@ -112,6 +114,18 @@ class WoltlabPluginStoreVerificationForm extends AbstractForm {
 		if (isset($_POST['pluginstoreFileID'])) $this->fileID = intval($_POST['pluginstoreFileID']);
 		if (isset($_POST['privacyAccept'])) $this->privacyAccept = boolval($_POST['privacyAccept']);
 		if (isset($_POST['woltlabID'])) $this->woltlabID = intval($_POST['woltlabID']);
+	}
+	
+	/**
+	 * @inheritdoc
+	 * @since	2.2.2
+	 */
+	public function readParameters() {
+		parent::readParameters();
+		
+		if (!WoltlabPluginStoreVerificationFormPageHandler::hasAvailableContent()) {
+			throw new IllegalLinkException();
+		}
 	}
 	
 	/**
