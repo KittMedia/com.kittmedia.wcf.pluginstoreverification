@@ -43,5 +43,5 @@ abstract class AbstractWoltlabPluginstoreContentProvider implements IWoltlabPlug
 	/**
 	 * @inheritdoc
 	 */
-	abstract function provideContent(WoltlabPluginstoreContentProviderFile $file, User $user);
+	public abstract function provideContent(WoltlabPluginstoreContentProviderFile $file, User $user);
 }
