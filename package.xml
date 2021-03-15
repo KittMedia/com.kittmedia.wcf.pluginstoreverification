@@ -3,8 +3,8 @@
 	<packageinformation>
 		<packagename>WoltLab Plugin Store Verification</packagename>
 		<packagedescription><![CDATA[]]></packagedescription>
-		<version>2.2.1</version>
-		<date>2021-03-01</date>
+		<version>2.2.2</version>
+		<date>2021-03-15</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -14,7 +14,7 @@
 	
 	<requiredpackages>
 		<requiredpackage minversion="5.2.4">com.woltlab.wcf</requiredpackage>
-		<requiredpackage minversion="2.2.0">com.kittmedia.wcf.woltlabapi</requiredpackage>
+		<requiredpackage minversion="2.2.1">com.kittmedia.wcf.woltlabapi</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>
@@ -38,15 +38,7 @@
 		<instruction type="template" />
 	</instructions>
 	
-	<instructions type="update" fromversion="2.1.0 Alpha 1">
-		<!-- dummy instruction -->
-		<instruction type="language" />
-	</instructions>
-	
-	<instructions type="update" fromversion="2.2.0">
-		<!-- configuration -->
-		<instruction type="language" />
-		
+	<instructions type="update" fromversion="2.2.1">
 		<!-- files -->
 		<instruction type="template" />
 	</instructions>
