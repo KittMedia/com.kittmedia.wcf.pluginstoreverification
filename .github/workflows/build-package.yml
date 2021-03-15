@@ -5,8 +5,14 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      # Create package
       - uses: actions/checkout@v2
+      # Get WoltLab API package
+      - uses: actions/checkout@v2
+        with:
+          repository: KittMedia/com.kittmedia.wcf.woltlabapi
+          ref: master
+          path: requirements/com.kittmedia.wcf.woltlabapi
+      # Create package
       - name: WoltLab Suite Package Creation
         uses: KittMedia/action-wsc-package-create@main
       # Install SSH key
